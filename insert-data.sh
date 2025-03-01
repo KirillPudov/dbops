@@ -15,6 +15,7 @@ echo "CREATE DATABASE store;"
 #Создадим нового пользователя
 echo "CREATE ROLE store WITH LOGIN PASSWORD 'store';" >> init.sql
 echo "GRANT ALL PRIVILEGES ON DATABASE store TO store;" >> init.sql
+echo "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO qa_read_only;" >> init.sql
 
 # Очистим базу
 echo "DROP TABLE IF EXISTS product;" >> init.sql
