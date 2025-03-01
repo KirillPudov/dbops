@@ -9,6 +9,13 @@ PSQL_CONNECTION="postgresql://${PSQL_ADMIN}:${PSQL_PASSWORD}@${PSQL_HOST}:${PSQL
 
 touch init.sql
 
+#Создадим новую БД
+echo "CREATE DATABASE store;"
+
+#Создадим нового пользователя
+echo "CREATE ROLE store WITH LOGIN PASSWORD 'store';" >> init.sql
+echo "GRANT ALL PRIVILEGES ON DATABASE store TO store;" >> init.sql
+
 # Очистим базу
 echo "DROP TABLE IF EXISTS product;" >> init.sql
 echo "DROP TABLE IF EXISTS product_info;" >> init.sql
